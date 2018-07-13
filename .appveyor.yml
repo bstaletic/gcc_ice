@@ -1,0 +1,15 @@
+version: "{build}"
+image: Visual Studio 2017
+platform: x64
+configuration: Debug
+
+environment:
+  CLICOLOR_FORCE: 1
+  matrix:
+    - MSYSTEM: MSVC
+
+before_build:
+  - cmake -DCMAKE_GENERATOR_PLATFORM=x64 .
+
+build:
+  project: $(APPVEYOR_BUILD_FOLDER)\ice.sln
